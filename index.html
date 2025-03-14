@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Editor</title>
+    <script src="https://mozilla.github.io/pdf.js/build/pdf.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/4.6.0/fabric.min.js"></script>
+    <style>
+        body { text-align: center; font-family: Arial, sans-serif; }
+        canvas { border: 1px solid black; }
+        .toolbar button { margin: 5px; }
+    </style>
+</head>
+<body>
+    <h2>PDF Editor</h2>
+    <input type="file" id="upload-pdf" accept="application/pdf">
+    <canvas id="pdf-canvas"></canvas>
+    <div class="toolbar">
+        <button onclick="addText()">Add Text</button>
+        <button onclick="downloadPDF()">Download PDF</button>
+    </div>
+
+    <script>
+        let pdfDoc = null;
+        let canvas = document.getElementById("pdf-canvas");
+        let ctx = canvas.getContext("2d");
+        
+        document.getElementById("upload-pdf").addEventListener("change", async (event) => {
+            let file = event.target.files[0];
+            if (file) {
+                let fileReader = new FileReader();
+                fileReader.onload = async function() {
+                    let typedArray = new Uint8Array(this.result);
+                    pdfDoc = await pdfjsLib.getDocument({ data: typedArray }).promise;
+                    renderPDF();
+                };
+                fileReader.readAsArrayBuffer(file);
+            }
+        });
+
+        async function renderPDF() {
+            let page
+
