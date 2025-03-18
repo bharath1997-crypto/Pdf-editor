@@ -1,31 +1,33 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    margin: 0;
-    padding: 20px;
     text-align: center;
+    background-color: #f4f4f4;
 }
 
 .toolbar {
-    margin: 20px 0;
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
 }
 
 button {
     padding: 10px;
-    margin: 5px;
-    cursor: pointer;
-    background: #007BFF;
-    color: white;
     border: none;
+    background-color: #007BFF;
+    color: white;
+    cursor: pointer;
     border-radius: 5px;
 }
 
 button:hover {
-    background: #0056b3;
+    background-color: #0056b3;
 }
 
 canvas {
     border: 1px solid #ccc;
-    display: block;
-    margin: auto;
+    margin-top: 10px;
+    width: 100%;
+    max-width: 800px;
 }

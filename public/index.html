@@ -9,7 +9,7 @@
 <body>
     <h1>Advanced PDF Editor</h1>
 
-    <!-- Authentication Section -->
+    <!-- Authentication -->
     <div id="auth-container">
         <input type="email" id="email" placeholder="Enter Email">
         <input type="password" id="password" placeholder="Enter Password">
@@ -18,14 +18,14 @@
     </div>
 
     <div id="user-info" style="display: none;">
-        <p>Welcome, <span id="user-email"></span>!</p>
+        <p>Welcome, <span id="user-email"></span></p>
         <button onclick="logout()">Logout</button>
     </div>
 
     <!-- PDF Upload -->
     <input type="file" id="upload-pdf" accept="application/pdf">
 
-    <!-- Toolbar for Editing -->
+    <!-- Toolbar -->
     <div class="toolbar">
         <button onclick="addText()">Add Text</button>
         <button onclick="addRectangle()">Add Rectangle</button>
@@ -35,25 +35,32 @@
         <button onclick="redo()">Redo</button>
         <button onclick="zoomIn()">Zoom In</button>
         <button onclick="zoomOut()">Zoom Out</button>
-        <button onclick="savePDF()">Save</button>
+        <button onclick="saveCanvas()">Save</button>
         <button onclick="downloadPDF()">Download PDF</button>
         <button onclick="printPDF()">Print PDF</button>
     </div>
 
-    <!-- PDF Viewer -->
+    <!-- PDF Display Area -->
     <canvas id="pdf-canvas"></canvas>
 
     <!-- Page Navigation -->
-    <button onclick="prevPage()">Previous</button>
-    <span id="page-info">Page 1</span>
-    <button onclick="nextPage()">Next</button>
+    <div>
+        <button onclick="prevPage()">Previous</button>
+        <span>Page <span id="page-num">1</span></span>
+        <button onclick="nextPage()">Next</button>
+    </div>
 
-    <!-- Libraries -->
+    <!-- Firebase SDK -->
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js"></script>
-    <script src="https://mozilla.github.io/pdf.js/build/pdf.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js"></script>
+
+    <!-- External Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.12.313/pdf.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/4.6.0/fabric.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+
+    <!-- Custom JS -->
     <script src="script.js"></script>
 </body>
 </html>
