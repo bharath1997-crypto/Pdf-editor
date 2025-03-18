@@ -1,45 +1,78 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Advanced PDF Editor</title>
-    <script src="https://mozilla.github.io/pdf.js/build/pdf.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/4.6.0/fabric.min.js"></script>
-    <link rel="stylesheet" href="styles.css">
-    <script defer src="script.js"></script>
-</head>
-<body>
-    <div class="container">
-        <h2>Advanced PDF Editor</h2>
-        <input type="file" id="upload-pdf" accept="application/pdf">
-        
-        <div class="toolbar">
-            <button onclick="addText()">Add Text</button>
-            <button onclick="addRectangle()">Add Rectangle</button>
-            <button onclick="addHighlight()">Add Highlight</button>
-            <button onclick="addArrow()">Add Arrow</button>
-            <button onclick="addComment()">Add Comment</button>
-            <button onclick="enableDrawing()">Freehand Drawing</button>
-            <button onclick="undo()">Undo</button>
-            <button onclick="redo()">Redo</button>
-            <button onclick="zoomIn()">Zoom In</button>
-            <button onclick="zoomOut()">Zoom Out</button>
-            <button class="success" onclick="saveState()">Save</button>
-            <button class="warning" onclick="loadState()">Load</button>
-            <button class="success" onclick="downloadPDF()">Download PDF</button>
-            <button class="danger" onclick="printPDF()">Print PDF</button>
-            <button class="toggle-dark-mode" onclick="toggleDarkMode()">Dark Mode</button>
-        </div>
-        
-        <div class="page-navigation">
-            <button onclick="prevPage()">Previous</button>
-            <span id="page-num">Page 1</span>
-            <button onclick="nextPage()">Next</button>
-        </div>
-        
-        <canvas id="pdf-canvas"></canvas>
-    </div>
-</body>
-</html>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 1200px;
+    margin: 20px auto;
+}
+
+h1 {
+    color: #007BFF;
+    text-align: center;
+}
+
+input[type="file"] {
+    display: block;
+    margin: 10px auto;
+    padding: 10px;
+    border: 2px dashed #007BFF;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #f9f9f9;
+    color: #007BFF;
+}
+
+.toolbar {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.toolbar button {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.toolbar button:hover {
+    background-color: #0056b3;
+}
+
+.canvas-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#pdf-canvas, #fabric-canvas {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    max-width: 800px;
+}
+
+#fabric-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: transparent;
+}
