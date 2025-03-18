@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced PDF Editor</title>
+    <script src="https://mozilla.github.io/pdf.js/build/pdf.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/4.6.0/fabric.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h2>Advanced PDF Editor</h2>
+        <input type="file" id="upload-pdf" accept="application/pdf">
+        
+        <div class="toolbar">
+            <button onclick="addText()">Add Text</button>
+            <button onclick="addRectangle()">Add Rectangle</button>
+            <button onclick="addHighlight()">Add Highlight</button>
+            <button onclick="addArrow()">Add Arrow</button>
+            <button onclick="addComment()">Add Comment</button>
+            <button onclick="enableDrawing()">Freehand Drawing</button>
+            <button onclick="undo()">Undo</button>
+            <button onclick="redo()">Redo</button>
+            <button onclick="zoomIn()">Zoom In</button>
+            <button onclick="zoomOut()">Zoom Out</button>
+            <button class="success" onclick="saveState()">Save</button>
+            <button class="warning" onclick="loadState()">Load</button>
+            <button class="success" onclick="downloadPDF()">Download PDF</button>
+            <button class="danger" onclick="printPDF()">Print PDF</button>
+            <button class="toggle-dark-mode" onclick="toggleDarkMode()">Dark Mode</button>
+        </div>
+        
+        <div class="page-navigation">
+            <button onclick="prevPage()">Previous</button>
+            <span id="page-num">Page 1</span>
+            <button onclick="nextPage()">Next</button>
+        </div>
+        
+        <canvas id="pdf-canvas"></canvas>
+    </div>
+</body>
+</html>

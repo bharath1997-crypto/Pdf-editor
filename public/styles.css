@@ -16,11 +16,12 @@ body {
     width: 90%;
     max-width: 1200px;
     margin: 20px auto;
+    text-align: center;
 }
 
-h1 {
+h2 {
+    margin-bottom: 20px;
     color: #007BFF;
-    text-align: center;
 }
 
 input[type="file"] {
@@ -56,10 +57,62 @@ input[type="file"] {
     background-color: #0056b3;
 }
 
+.page-navigation {
+    margin-top: 15px;
+    text-align: center;
+}
+
+.page-navigation button {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.page-navigation button:hover {
+    background-color: #0056b3;
+}
+
 canvas {
     border: 1px solid #ccc;
     margin-top: 10px;
     border-radius: 5px;
     width: 100%;
     height: auto;
+}
+
+/* Dark Mode */
+.dark-mode {
+    background-color: #222;
+    color: white;
+}
+
+.dark-mode .container {
+    background: #333;
+    color: white;
+}
+
+.dark-mode .toolbar button {
+    background-color: #555;
+}
+
+.dark-mode .toolbar button:hover {
+    background-color: #777;
+}
+
+.toggle-dark-mode {
+    background-color: #333;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+    border: none;
+}
+
+.toggle-dark-mode:hover {
+    background-color: #555;
 }
