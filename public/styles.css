@@ -56,23 +56,10 @@ input[type="file"] {
     background-color: #0056b3;
 }
 
-.canvas-container {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-#pdf-canvas, #fabric-canvas {
+canvas {
     border: 1px solid #ccc;
+    margin-top: 10px;
     border-radius: 5px;
     width: 100%;
-    max-width: 800px;
-}
-
-#fabric-canvas {
-    position: absolute;
-    top: 0;
-    left: 0;
-    background: transparent;
+    height: auto;
 }

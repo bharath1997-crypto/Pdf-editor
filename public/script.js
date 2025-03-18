@@ -1,18 +1,27 @@
+// Initialize Firebase (Using Firebase CDN)
+const firebaseConfig = {
+    apiKey: "AIzaSyDBb4NTWyvfVKd7fjQ6hDOJhyOfRFshARY",
+    authDomain: "pdf-editor-616e9.firebaseapp.com",
+    projectId: "pdf-editor-616e9",
+    storageBucket: "pdf-editor-616e9.appspot.com",  // Fixed Storage URL
+    messagingSenderId: "59540219446",
+    appId: "1:59540219446:web:f205b9af2cd71d158f1a97",
+    measurementId: "G-3HN9MTHN1Z"
+};
+
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+firebase.analytics();
+
+console.log("Firebase successfully initialized!");
+
+// PDF Handling Variables
 let pdfDoc = null;
 let currentPage = 1;
 let scale = 1.5;
-let pdfCanvas = document.getElementById("pdf-canvas");
-let ctx = pdfCanvas.getContext("2d");
-
-// Initialize Fabric.js on a separate canvas
-let fabricCanvas = new fabric.Canvas("fabric-canvas", {
-    backgroundColor: "transparent",
-});
-
-// Ensure both canvases align correctly
-document.getElementById("fabric-canvas").style.position = "absolute";
-document.getElementById("fabric-canvas").style.top = "0";
-document.getElementById("fabric-canvas").style.left = "0";
+let canvas = document.getElementById("pdf-canvas");
+let ctx = canvas.getContext("2d");
+let fabricCanvas = new fabric.Canvas("pdf-canvas");
 
 // Load PDF
 document.getElementById("upload-pdf").addEventListener("change", async (event) => {
@@ -34,17 +43,10 @@ async function renderPDF() {
     if (!pdfDoc) return;
     let page = await pdfDoc.getPage(currentPage);
     let viewport = page.getViewport({ scale });
-    pdfCanvas.width = viewport.width;
-    pdfCanvas.height = viewport.height;
-    document.getElementById("fabric-canvas").width = viewport.width;
-    document.getElementById("fabric-canvas").height = viewport.height;
-
+    canvas.width = viewport.width;
+    canvas.height = viewport.height;
     let renderContext = { canvasContext: ctx, viewport: viewport };
-    await page.render(renderContext).promise();
-
-    // Align Fabric.js overlay to match PDF size
-    fabricCanvas.setWidth(viewport.width);
-    fabricCanvas.setHeight(viewport.height);
+    await page.render(renderContext).promise;
 }
 
 // Add Text
